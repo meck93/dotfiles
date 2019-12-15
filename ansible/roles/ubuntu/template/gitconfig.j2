@@ -1,0 +1,15 @@
+[pull]
+	rebase = true
+[alias]
+	lg = log --color --graph --pretty=format:'\t%C(red)%h%C(reset) - %<(75,trunc)%s %C(green)%<(15,trunc)%cr %C(bold blue)%<(15,trunc)%an %C(reset)%C(yellow)%d' --abbrev-commit -15
+	a = add .
+	ads = add . && diff --staged
+[core]
+	editor = vim
+	autocrlf = input
+[user]
+	name = "Moritz Eck"
+	email = "moritz.eck@gmail.com"
+[color]
+	ui = true
+

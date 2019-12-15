@@ -1,0 +1,6 @@
+---
+- name: Ubuntu Install Everything I Want
+  hosts: localhost
+  become: true
+  roles:
+    - ubuntu
