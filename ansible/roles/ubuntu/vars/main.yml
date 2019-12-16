@@ -1,10 +1,4 @@
-apt_repos:
-- 'deb http://ppa.launchpad.net/mercurial-ppa/releases/ubuntu eoan main'
-- 'ppa:git-core/ppa'
-
 apt_packages:
-  - aptitude
-  - apt-transport-https
   - ca-certificates
   - cowsay
   - curl

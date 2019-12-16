@@ -1,9 +1,10 @@
 [pull]
 	rebase = true
 [alias]
-	lg = log --color --graph --pretty=format:'\t%C(red)%h%C(reset) - %<(75,trunc)%s %C(green)%<(15,trunc)%cr %C(bold blue)%<(15,trunc)%an %C(reset)%C(yellow)%d' --abbrev-commit -15
+	lg = log --color --graph --pretty=format:'\t%C(red)%h%C(reset) - %<(75,trunc)%s %C(green)%<(15,trunc)%cr %C(bold blue)%<(15,trunc)%an %C(reset)%C(yellow)%d' --abbrev-commit -20
 	a = add .
 	ads = add . && diff --staged
+	ci = commit
 [core]
 	editor = vim
 	autocrlf = input

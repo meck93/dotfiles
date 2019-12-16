@@ -1,35 +1,19 @@
 ---
-
 - name: Ensure the system can use the HTTPS transport for APT
   stat: path=/usr/lib/apt/methods/https
   register: apt_https_transport
 
 - name: Install HTTPS transport for APT
-  apt: pkg=apt-transport-https state=installed
-  when: not apt_https_transport.stat.exists
-
-- name: Add Apt Repos
-  apt_repository: repo={{ item }} state=present
-  with_items: "{{ apt_repos }}"
+  apt: pkg=apt-transport-https state=present
 
 - name: Enable all repositories in sources.list
   replace: dest=/etc/apt/sources.list regexp='^#\s?deb(.+)http://(.+)/ubuntu(.+)$' replace='deb\1http://\2/ubuntu\3' backup=yes
 
-- name: Ensure that Aptitude repositories are up to date
-  apt: update_cache=yes
-
 - name: Install APT Packages
-  apt: pkg={{ item }} state=latest update_cache=yes
-  with_items: "{{ apt_packages }}"
+  apt: pkg={{ apt_packages }} state=latest update_cache=yes
 
 - name: Upgrade installed packages
   apt: upgrade=yes
-
-- name: Setup node symbolic link
-  file:
-    src: /usr/bin/nodejs
-    dest: /usr/bin/node
-    state: link
 
 - name: Setup Configuration Files
   file:
@@ -38,21 +22,17 @@
     state: link
     src: "{{ ansible_env.PWD }}/roles/ubuntu/files/{{ item.filename }}"
   with_items:
-    - {filename: ansible.cfg, dest: ~/.ansible.cfg}
+    - { filename: ansible.cfg, dest: ~/.ansible.cfg }
 
 - name: Setup gitconfig
   template:
     dest: ~/.gitconfig
-    src: gitconfig.j2
+    src: ../template/gitconfig.j2
+    force: no
 
 - name: Update to latest PIP
   pip:
     name: pip
-    state: latest
-
-- name: Install Global PIP Requirements
-  pip:
-    requirements: "{{ ansible_env.PWD }}/roles/ubuntu/files/requirements_global.txt"
     state: latest
 
 - name: Remove useless items
@@ -64,10 +44,16 @@
     - "~/Public"
     - "~/examples.desktop"
 
-- name: Create Dev Directory
+- name: Ansible check if code dir exists.
+  stat:
+    path: /home/meck/code
+  register: code
+
+- name: Create Code dir (if not exists).
   file:
-    path: "{{ ansible_env.HOME }}/code"
+    path: /home/meck/code
     state: directory
+  when: code.stat.exists == false
 
 - include_tasks: docker.yml
 - include_tasks: zsh.yml
