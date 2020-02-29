@@ -22,3 +22,9 @@ apt_packages:
   - python3-pip
   - ruby
   - xdotool
+
+snap_packages:
+  - heroku
+  - spotify
+  - code
+  - bitwarden

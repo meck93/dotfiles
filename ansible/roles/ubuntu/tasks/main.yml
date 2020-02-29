@@ -15,6 +15,9 @@
 - name: Upgrade installed packages
   apt: upgrade=yes
 
+- name: Install Snap Packages
+  snap: name={{ snap_packages }} classic=yes
+
 - name: Setup default config folder
   file:
     path: ~/.config
