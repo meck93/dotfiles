@@ -1,22 +1,39 @@
 {
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
   "editor.formatOnSave": true,
+  "editor.mouseWheelZoom": true,
+  // python function colorization
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "meta.function-call.generic.python",
+        "settings": {
+          "foreground": "#43b5bd"
+        }
+      }
+    ]
+  },
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
+  "files.associations": {
+    "*.prisma": "prisma"
+  },
   // formating
   "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "updateImportsOnFileMove.enabled": "always"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "updateImportsOnFileMove.enabled": "always"
   },
   "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "updateImportsOnFileMove.enabled": "always"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "updateImportsOnFileMove.enabled": "always"
   },
   "prettier.printWidth": 120,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   // debugger
   "debug.node.autoAttach": "on"
 }

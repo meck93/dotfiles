@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-    	npm
+  npm
 	npx
 	nvm
 	ssh-agent
