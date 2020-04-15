@@ -69,10 +69,17 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	zsh-autosuggestions
 	git
+    	npm
+	npx
+	nvm
 	ssh-agent
 	docker
+	ubuntu
+	ansible
+	tmux
+	zsh-syntax-highlighting
+	zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,6 +114,19 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias ll="ls -laFh"
 
+# postgres local instance
+alias pgstart="sudo service postgresql start"
+alias runpg="sudo -u postgres psql"
+
+# export local secrets
+export GITHUB_TOKEN=
+export NPM_TOKEN=
+
+# -- required due to wsl2 time update bug --
+# update the time
+sudo hwclock -s
+echo "Time updated! `date`"
+
 # remove computer name from shell
 prompt_context() {
 	DEFAULT_USER="($whoami)"
@@ -115,3 +135,17 @@ prompt_context() {
 	fi
 }
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/meck/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/meck/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/meck/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/meck/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
