@@ -6,18 +6,18 @@
     force: yes
 
 - name: Install fusuma
-  gem: 
+  gem:
     name: fusuma
     state: present
 
 - name: Enable sending touchpad events to GNOME desktop
-  shell: 
+  shell:
     cmd: gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled
 
 - name: Make sure the current user is part of the input group
-  shell: 
+  shell:
     cmd: gpasswd -a $USER input
 
 - name: Add the following command to Startup tasks
-  shell: 
+  shell:
     cmd: echo "sudo fusuma -d -c /home/$USER/.config/fusuma/config.yml"

@@ -26,10 +26,10 @@
 
 - name: Setup Configuration Files
   file:
-    dest: "{{ item.dest }}"
+    dest: '{{ item.dest }}'
     force: yes
     state: link
-    src: "{{ ansible_env.PWD }}/roles/ubuntu/files/{{ item.filename }}"
+    src: '{{ ansible_env.PWD }}/roles/ubuntu/files/{{ item.filename }}'
   with_items:
     - { filename: ansible.cfg, dest: ~/.ansible.cfg }
 
@@ -46,12 +46,12 @@
 
 - name: Remove useless items
   file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: absent
   with_items:
-    - "~/Templates"
-    - "~/Public"
-    - "~/examples.desktop"
+    - '~/Templates'
+    - '~/Public'
+    - '~/examples.desktop'
 
 - name: Ansible check if code dir exists.
   stat:
@@ -63,8 +63,8 @@
     path: /home/meck/code
     state: directory
   when: code.stat.exists == false
-
-- include_tasks: fusuma.yml
+# additional tasks
+# - include_tasks: fusuma.yml
 # - include_tasks: docker.yml
 # - include_tasks: zsh.yml
 # - include_tasks: vscode.yml
