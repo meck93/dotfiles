@@ -1,7 +1,8 @@
 {
   "files.autoSave": "onFocusChange",
   "editor.tabSize": 2,
-  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  // font family needs to be adapated to whatever the font is called on your system
+  "editor.fontFamily": "JetBrainsMono NF",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.mouseWheelZoom": true,
@@ -25,15 +26,21 @@
   },
   // formating
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "updateImportsOnFileMove.enabled": "always"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "updateImportsOnFileMove.enabled": "always"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.printWidth": 120,
   "workbench.iconTheme": "material-icon-theme",
   // debugger
-  "debug.node.autoAttach": "on"
+  "debug.node.autoAttach": "on",
+  // terminals
+  "terminal.integrated.shell.linux": "/usr/bin/bash",
+  "terminal.integrated.shell.windows": "powershell.exe"
 }
